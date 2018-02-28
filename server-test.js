@@ -92,12 +92,11 @@ mark.save(function(err) {
 // rekordy zostały dodane do bazy, nie można dodac ich duplikatu
 //
 //znalezienie konkretnych rekordów
-User.find({ username: 'Ryszard_the_boy'}).exec(function(err, res) {
-  if (err) throw err;
-  console.log("Record you are looking for is " + res);
-});
-//
-//
+// User.find({ username: 'Ryszard_the_boy'}).exec(function(err, res) {
+//   if (err) throw err;
+//   console.log("Record you are looking for is " + res);
+// });
+
 // // aktualizacja rekordu
 // User.find({username: 'Kenny_the_boy'}, function(err, user) {
 //   if (err) throw err;
@@ -115,9 +114,9 @@ User.find({ username: 'Ryszard_the_boy'}).exec(function(err, res) {
 //
 // //usuwanie rekordu
 //
-// User.findOneAndRemove({ username: 'Benny_the_boy'}, function(err) {
+// User.findOneAndRemove({ username: 'Kenny_the_boy'}, function(err) {
 //   if (err) throw err;
 //   console.log("User deleted!");
 // })
-//
+// //
 // // node server-test.js
