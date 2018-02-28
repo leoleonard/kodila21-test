@@ -1,0 +1,50 @@
+1. brew update
+2. brew install mongodb // if not: sudo brew install mongodb
+3. stworzenie katalogu: mkdir -p /data/db
+4. nadanie upoważnień do odczytu/zapisu: ls -ls /data/db
+5. uzyskanie pewnych uprawnien: sudo chmod 777 /data/db
+6. uruchomienia Mango: mongod
+7. aktywacja JS shella - nowa karta: mongo
+8. stworzenie nowej bazy danych: use NAZWA_BAZY
+9. wskazanie aktualnej bazy danych: db
+10. lista baz danych: show dbs
+  - aby baza znajdowala sie na liscie musi zawierac przynajmniej jeden plik
+11. stworzenie kolekcji: db.createCollection("nazwa_kolekcji")
+  - również: db.nazwa-kolekcji.insert()
+  - kolekcje przechowują wiele dokumentów
+12. lista kolekcji: show collecitons
+13. CRUD
+  - Create
+    - .insert()
+    - db.collection_one.insert({name: "Burek", age: 3, tags: ["dogs", "bark"]})
+  - Read
+    - db.collection_one.find()
+    - dodanie parametru _id
+    -
+  - Update
+    - .save() - zastępuje istniejący dokument innym dokumentem
+      - gdy nie zdefiniowane są dane parametry rekordu, zostają one wymazane
+    - .update() - aktualizacja wartości w istniejącym dokumencie
+      - db.nazwa_kolekcji.update({kryterium_wyboru_dokumentu}, {nowa_wartość}) - zmiana pojedycznego rekordu
+        db.collection_one.update({"name": "burek"}, {$set: {"name": "burek po aktualizacji"}})
+      - aby zmienic wszystkie elementy: ({kryterium_wyboru_dokumentu}, {nowa wartość}, {multi: true})
+  - Delete
+    - .remove()
+      - db.nazwa_kolekcji.remove({kryteria_usuwania}, true) // true - tylko jeden rekord
+      - db.collection_one.remove({"name": "burek po aktualizacji"}, true)
+      - db.collection_one.remove({}) - usuwa wszystie rekordy
+
+14. Mangoose
+  - Mangoose to biblioteka modelująca obiekty z MangoDB do NodeJS
+  - instalacja: npm install mangoose --save
+  - wpięcie do pliku JS: const mangoose = require('mangoose');
+  - podpięcie bazy danych MangoDB
+    - use basetest
+    - mangoose.connect('mangodb://localhost/basetest', {
+      use MangoClient: true
+    })
+  - model Mangoose (constructor)
+    - reprezentują dokumenty, którą są zapisywane i odczytywane przez bazy danych
+    - pobranie głównego konstruktora
+    - określenie modelu (wartość - klucz)
+    - 
